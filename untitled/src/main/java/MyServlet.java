@@ -11,53 +11,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/MyServlet")
-public class MyServlet  extends HttpServlet {
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws IOException, ServletException {
-            // Procesa alguna lógica aquí
-            String message = "{message: 'Hola desde el Servlet'}";
-            response.setContentType("application/json");
+public class MyServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        // Procesa alguna lógica aquí
+        String message = "{message: 'Hola desde el Servlet'}";
+        response.setContentType("application/json");
 
-            String action = request.getParameter("ACTION");
-            //String id= request.getParameter("id");
-            PrintWriter out = response.getWriter();
-            //out.print(message);a
-            String jsonResponse = "{\"message\": \"¡Hola desde el Servlet!_"+ action + "\"}";
+        String action = request.getParameter("ACTION");
+        //String id= request.getParameter("id");
+        PrintWriter out = response.getWriter();
+        //out.print(message);a
+        String jsonResponse = "{\"message\": \"¡Hola desde el Servlet!_" + action + "\"}";
 
-            String jsonResponseObject= "{\n" +
-                    "    \"message\": \"Este es un mensaje de ejemplo\",\n" +
-                    "    \"lstUsers\": [\n" +
-                    "        {\n" +
-                    "            \"username\": \"username1\",\n" +
-                    "            \"token\": \"token1\"\n" +
-                    "        },\n" +
-                    "        {\n" +
-                    "            \"username\": \"username2\",\n" +
-                    "            \"token\": \"token2\"\n" +
-                    "        },\n" +
-                    "        {\n" +
-                    "            \"username\": \"username3\",\n" +
-                    "            \"token\": \"token3\"\n" +
-                    "        }\n" +
-                    "    ]\n" +
-                    "}";
-            User user1 = new User("username1", "token1");
-            User user2 = new User("username2", "token2");
+        String jsonResponseObject = "{\n" +
+                "    \"message\": \"Este es un mensaje de ejemplo\",\n" +
+                "    \"lstUsers\": [\n" +
+                "        {\n" +
+                "            \"username\": \"username1\",\n" +
+                "            \"token\": \"token1\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"username\": \"username2\",\n" +
+                "            \"token\": \"token2\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"username\": \"username3\",\n" +
+                "            \"token\": \"token3\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+        User user1 = new User("username1", "token1");
+        User user2 = new User("username2", "token2");
 
-            List<User> userList = new ArrayList<>();
-            userList.add(user1);
-            userList.add(user2);
+        List<User> userList = new ArrayList<>();
+        userList.add(user1);
+        userList.add(user2);
 
-            //out.print(convertUsersToJSONString(userList));
-            out.print(jsonResponseObject);
+        //out.print(convertUsersToJSONString(userList));
+        out.print(jsonResponseObject);
 
-            // Escribir el JSON en el PrintWriter
-            //out.print(jsonResponse);
+        // Escribir el JSON en el PrintWriter
+        //out.print(jsonResponse);
             /*request.setAttribute("message", message);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
              */
-            out.close();
-        }
+        out.close();
+    }
 
     public static String convertUsersToJSONString(List<User> users) {
         StringBuilder jsonBuilder = new StringBuilder();
@@ -79,5 +79,5 @@ public class MyServlet  extends HttpServlet {
         jsonBuilder.append("]");
         return jsonBuilder.toString();
     }
-    }
+}
 
